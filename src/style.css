@@ -1,0 +1,226 @@
+/* Resets and Initial Setup */
+*::selection {
+  background-color: lightgreen;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+body {
+  background-color: rgb(238, 237, 237);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: black;
+}
+
+/* Main Sementic */
+main {
+  margin-inline: auto;
+  width: min(700px, 100%);
+  /* border: 4px solid orange; */
+  padding: 2rem;
+}
+
+/* Title */
+main .title {
+  font-size: 2.3rem;
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+/* Gesture Related Styles */
+.gesture-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 5rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .gesture-container {
+    flex-direction: column;
+  }
+}
+
+.gesture-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 130px;
+  height: 130px;
+  font-size: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 10000;
+}
+
+.gesture-circle::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(40, 155, 193),
+    rgb(225, 88, 170)
+  );
+  animation: border-rotation 2s infinite linear;
+  z-index: -3;
+}
+
+@keyframes border-rotation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gesture-circle::after {
+  content: '';
+  position: absolute;
+  background-color: white;
+  width: 120px;
+  height: 120px;
+  z-index: -2;
+  border-radius: 50%;
+}
+
+.gesture-circle:hover {
+  background-color: red;
+}
+
+/* Second Section */
+.controllers-container {
+  text-align: center;
+}
+
+/* Result */
+.show-result {
+  margin: 2.5rem 0 0;
+  padding: 2rem;
+  font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+  display: none;
+  border: 2px solid green;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 128, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 128, 0, 0.3);
+  box-shadow: 0 0 15px rgba(0, 128, 0, 0.3);
+  box-shadow: 0 0 20px rgba(0, 128, 0, 0.3);
+  box-shadow: 0 0 25px rgba(0, 128, 0, 0.3);
+  box-shadow: 0 0 30px rgba(0, 128, 0, 0.3);
+  box-shadow: 0 0 35px rgba(0, 128, 0, 0.3);
+}
+
+/* Score */
+.show-score {
+  position: relative;
+  font-size: clamp(1rem, 4.5vw, 1.8rem);
+  text-align: center;
+  margin: 5rem 0;
+  width: min(450px, 100%);
+  margin-inline: auto;
+}
+
+.show-score::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 300px;
+  height: 50px;
+  background-image: url(../public/underline.svg);
+  background-repeat: no-repeat;
+}
+
+/* Reset and Autoplay Buttons */
+.reset-button {
+  font-size: 1.5rem;
+  border: 2px solid lightblue;
+  width: fit-content;
+  padding: 1rem 3.5rem;
+  border-radius: 0.5rem;
+  display: inline;
+  cursor: pointer;
+}
+
+.reset-btn,
+.autoplay-btn {
+  display: inline-block;
+  width: fit-content;
+  position: relative;
+  font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+  border: 2px solid lightblue;
+  padding: 1rem 3.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-right: 1rem;
+  overflow: hidden;
+}
+
+.reset-btn::before,
+.autoplay-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 60px;
+  background-color: lightblue;
+  transition: width 0.2s linear;
+  z-index: -4;
+}
+
+.reset-btn:hover::before,
+.autoplay-btn:hover::before {
+  width: 100%;
+}
+
+/* Notice */
+.notice-container {
+  margin: 2rem 0;
+  padding: 10px;
+  font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+}
+
+.notice-container > * {
+  margin-bottom: 2rem;
+}
+
+.notice {
+  font-size: 1.2rem;
+}
+
+.notice span {
+  color: red;
+}
+
+.keybindings {
+  font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+  border: 3px solid rgba(0, 255, 0, 0.4);
+  border-radius: 5px;
+  background-color: white;
+  width: 200px;
+  padding: 20px;
+  margin-inline: auto;
+}
+
+/* Footer */
+footer p {
+  text-align: center;
+  font-size: 1rem;
+  font-variant: small-caps;
+  margin: 1rem 0;
+}
